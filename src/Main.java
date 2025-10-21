@@ -1,15 +1,34 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+/*
+
+Это мини-проект про маркетплейс цифровых подписок,
+где пользователи подключают музыку, видео и облачное хранилище.
+Нужно реализовать биллинг за месяц с учётом пробного периода, пауз и совместного использования.
+Биллинг - система учета и выставления счетов как мы можем реализовать биллинг?
+необходимо чтобы в консоль выводилась сумма к оплате по уникальному ИД за месяц.
+
+базовый родитель class Subscription - для вариантов подписок
+поля: String id, String title, float monthlyPrice, int startDate, boolean active
+методы: activate(), cancel(), isActive(), price().
+
+1. Создадим класс базового родителя.
+2. Создадим классы для подписок.
+3. Создадим интерфейсы для взаимодействия с подписками и пользолвателями
+
+Также предусматривается расчёт стоимости по объёму услуг
+
+(например, дополнительный терабайт в облаке)
+и валидные ограничения (лимиты участников, корректные даты).
+ Итог — корректные деньги, прозрачные правила списаний и понятные ошибки при нарушениях.
+*
+
+
+*
+* */
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
     }
 }
