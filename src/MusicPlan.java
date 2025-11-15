@@ -1,19 +1,20 @@
-public class MusicPlan extends Subscription implements Billable, TrialSupport{
-    protected int trialDays = 14;
+class MusicPlan extends Subscription implements Billable, TrialSupport {
+    private int trialDays = 14;
 
-    public MusicPlan (String id, String title, float monthlyPrice, int startDate, boolean active, int trialDays){
-        super(id, title, monthlyPrice, startDate, active, trialDays);
-        this.trialDays = trialDays;
+    public MusicPlan(String id, String title, float monthlyPrice, int startDate) {
+        super(id, title, monthlyPrice, startDate);
     }
 
     @Override
-    public float montlyCharge(float forMonth) {
-        if (startDate > 17){
-            return 0;
-        } else {
-            return (31-14)*monthlyPrice;
-        }
+    public float monthlyCharge(int month) {
+        if (!active) return 0f;
+        int startOfMonth = (month - 1) * 30 + 1;
+        int endOfMonth = month * 30;
 
+        if (isInTrial(startOfMonth) || isInTrial(endOfMonth)) {
+            return 0f;
+        }
+        return monthlyPrice;
     }
 
     @Override
@@ -22,23 +23,7 @@ public class MusicPlan extends Subscription implements Billable, TrialSupport{
     }
 
     @Override
-    public boolean isInTrial(int date){
-        int finishTrialDays = startDate + 14;
-        if (date > finishTrialDays) {
-            return false;
-        } else return true;
-    }
-
-    @Override
-    public String toString() {
-        return "MusicPlan{" +
-                "trialDays=" + trialDays +
-                ", id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", monthlyPrice=" + monthlyPrice +
-                ", startDate=" + startDate +
-                ", active=" + active +
-                ", price=" + price +
-                '}';
+    public boolean isInTrial(int date) {
+        return date < startDate + trialDays;
     }
 }

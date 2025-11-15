@@ -30,7 +30,19 @@
 public class Main {
     public static void main(String[] args) {
 
-        CloudPlan cloudPlan = new CloudPlan("");
+
+        MusicPlan music = new MusicPlan("m1", "Spotify Lite", 300f, 1);
+        System.out.println("Музыка, месяц 1 (в trial): " + music.monthlyCharge(1));
+        System.out.println("Музыка, месяц 2: " + music.monthlyCharge(2));
+
+        VideoPlan video = new VideoPlan("v1", "Netflix Family", 600f, 1);
+        video.pause(5, 10);
+        System.out.println("Видео, месяц 1: " + video.monthlyCharge(1));
+        video.addMember("user123");
+        System.out.println("Участников: " + video.getMemberCount());
+
+        CloudPlan cloud = new CloudPlan("c1", "Yandex.Disk Pro", 200f, 1, 5, 200, 100);
+        System.out.println("Облако, месяц 1: " + cloud.monthlyCharge(1));
 
 
     }

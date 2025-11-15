@@ -1,4 +1,5 @@
+
 public interface Pausable {
-    int pause(int from, int to);
-    boolean isPauseOn(int date);
+    void pause(int from, int to);
+    boolean isPausedOn(int date);
 }
